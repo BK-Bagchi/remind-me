@@ -2,10 +2,16 @@
     min-height: 100vh;
     width: 100%;
 }
-.light-bg{
+.light-bg-pic{
     background-image: url("../../images/bg-desktop-light.jpg");
 }
-.dark-bg{
+.light-bg-color{
+    background-color: white;
+}
+.dark-bg-color{
+    background-color: black;
+}
+.dark-bg-pic{
     background-image: url("../../images/bg-desktop-dark.jpg");
 }
 .top{
@@ -16,5 +22,4 @@
 }
 .bottom{
     height: 70vh;
-    background-color: black;
 }
