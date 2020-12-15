@@ -1,18 +1,19 @@
 .todo{
+    position: relative;
     min-height: 100vh;
     width: 100%;
 }
 .light-bg-pic{
     background-image: url("../../images/bg-desktop-light.jpg");
 }
+.dark-bg-pic{
+    background-image: url("../../images/bg-desktop-dark.jpg");
+}
 .light-bg-color{
     background-color: white;
 }
 .dark-bg-color{
     background-color: black;
-}
-.dark-bg-pic{
-    background-image: url("../../images/bg-desktop-dark.jpg");
 }
 .top{
     height: 30vh;
@@ -22,4 +23,9 @@
 }
 .bottom{
     height: 70vh;
+}
+main{
+    position: absolute;
+    top: 0;
+    left: 50%;
 }
