@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, deleteTodo, doneTodo } from '../../redux/action/action';
 import './Todo.css';
 
 const Todo = () => {
@@ -7,7 +9,18 @@ const Todo = () => {
         { pic: 'dark-bg-pic', color: 'dark-bg-color', time: 'Dark' }
     ]
     const [bgIndex, setBgIndex] = useState(0)
-    const colorMode = () => (bgIndex === 1) ? setBgIndex(0) : setBgIndex(1)
+    const add = useDispatch()
+    const done = useDispatch()
+    const dlt = useDispatch()
+
+    console.log(useSelector(state => state.message));
+
+    const colorMode = () => {
+        (bgIndex === 1) ? setBgIndex(0) : setBgIndex(1)
+        add(addTodo('Item added'))
+        done(doneTodo('Item done'))
+        dlt(deleteTodo('Item deleted'))
+    }
 
     return (
         <section className="todo">
