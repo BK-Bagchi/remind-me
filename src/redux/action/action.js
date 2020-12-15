@@ -5,20 +5,20 @@ export const DELETE_TODO = 'DELETE_TODO'
 export const addTodo = (msg) => {
     return {
         type: ADD_TODO,
-        message: msg,
+        message: msg
     }
 }
 
-export const doneTodo = (msg) => {
+export const doneTodo = (done) => {
     return {
         type: DONE_TODO,
-        message: msg,
+        done: done
     }
 }
 
-export const deleteTodo = (msg) => {
+export const deleteTodo = (index) => {
     return {
         type: DELETE_TODO,
-        message: msg,
+        deleteIndex: index
     }
 }
