@@ -1,7 +1,9 @@
 .todo{
     position: relative;
     min-height: 100vh;
+    max-width: 300vh;
     width: 100%;
+    overflow: auto;
 }
 .light-bg-pic{
     background-image: url("../../images/bg-desktop-light.jpg");
@@ -64,6 +66,7 @@ button{
 .todo-work-list{
     border-radius: 5px;
     padding: 0 15px;
+    min-width: 160px;
 }
 .list-night{
     background: white;
@@ -79,4 +82,21 @@ button{
     font-style: italic !important;
     padding: 5px 0;
     border-bottom: 1px solid darkgray;
+}
+.calculation-bg-light,
+.calculation-bg-dark{
+    font-size: 20px;
+    padding: 10px 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.calculation-bg-light{
+    color: black;
+    background: white;
+    /* border: 1px solid black; */
+}
+.calculation-bg-dark{
+    color: white;
+    background: black;
+    /* border: 1px solid white; */
 }
