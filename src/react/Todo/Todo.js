@@ -19,10 +19,11 @@ const Todo = () => {
         setTodo(allTodo)
     }, [allTodo])
 
-    // console.log(todo);
+    console.log(todo);
 
     const colorMode = () => (bgIndex === 1) ? setBgIndex(0) : setBgIndex(1)
     const addingTodo = (e) => add(addTodo(e.target.value))
+    const doingTodo = (e, index) => done(doneTodo(e.target.checked, index))
     const deletingTodo = (index) => dlt(deleteTodo(index))
 
     return (
@@ -44,7 +45,7 @@ const Todo = () => {
                             todo.map((todo, i) => {
                                 return (
                                     <div className="d-flex align-items-center justify-content-between" key={i} >
-                                        <input type="checkbox" name="" id="" />
+                                        <input type="checkbox" name="" id="" onChange={(e) => doingTodo(e, i)} />
                                         <p>{todo.message}</p>
                                         <p onClick={() => deletingTodo(i)}>X</p>
                                     </div>

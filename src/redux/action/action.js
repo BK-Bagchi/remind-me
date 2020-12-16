@@ -9,9 +9,10 @@ export const addTodo = (msg) => {
     }
 }
 
-export const doneTodo = (done) => {
+export const doneTodo = (done, index) => {
     return {
         type: DONE_TODO,
+        doneIndex: index,
         done: done
     }
 }
