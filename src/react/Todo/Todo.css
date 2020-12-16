@@ -31,3 +31,12 @@ main{
 p{
     margin: 0;
 }
+.mode-toggle-icon{
+    font-size: 30px;
+}
+.Night{
+    color: white;
+}
+.Day{
+    color: orange;
+}

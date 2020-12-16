@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, doneTodo } from '../../redux/action/action';
 import './Todo.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 
 const Todo = () => {
     const add = useDispatch()
@@ -9,8 +11,8 @@ const Todo = () => {
     const dlt = useDispatch()
 
     const bgName = [
-        { pic: 'light-bg-pic', color: 'light-bg-color', time: 'Dark' },
-        { pic: 'dark-bg-pic', color: 'dark-bg-color', time: 'Light' }
+        { pic: 'light-bg-pic', color: 'light-bg-color', time: 'Night', icon: faMoon },
+        { pic: 'dark-bg-pic', color: 'dark-bg-color', time: 'Day', icon: faSun }
     ]
     const [bgIndex, setBgIndex] = useState(0)
     const [todoWork, setTodoWork] = useState('')
@@ -30,14 +32,15 @@ const Todo = () => {
     const deletingTodo = (index) => dlt(deleteTodo(index))
 
     return (
-        <section className="todo">
+        <section className={`todo ${bgName[bgIndex].time}`}>
             <div className={`top ${bgName[bgIndex].pic}`}></div>
             <div className={`bottom ${bgName[bgIndex].color}`}></div>
             <main className="w-100 d-flex justify-content-center">
                 <div>
-                    <div className="d-flex justify-content-between">
-                        <h1>To Do</h1>
-                        <button onClick={() => colorMode()}>{bgName[bgIndex].time}</button>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <h1 className={`${bgName[bgIndex].time}`} onClick={() => colorMode()}>To Do</h1>
+                        <p className={`mode-toggle-icon ${bgName[bgIndex].time}`} onClick={() => colorMode()}><FontAwesomeIcon icon={bgName[bgIndex].icon} /></p>
+                        {/* <button onClick={() => colorMode()}>{bgName[bgIndex].time}</button> */}
                     </div>
                     <div>
                         <input type="text" placeholder="Enter your To Do here" onBlur={settingTodo} />
