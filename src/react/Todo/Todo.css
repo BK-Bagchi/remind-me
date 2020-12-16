@@ -31,12 +31,52 @@ main{
 p{
     margin: 0;
 }
-.mode-toggle-icon{
+.font{
     font-size: 30px;
 }
 .Night{
-    color: white;
+    color: black;
 }
 .Day{
-    color: orange;
+    color: white;
+}
+.pointer{
+    cursor: pointer;
+}
+input[type=checkbox]{
+    transform: scale(1.5);
+}
+input[type=text], button{
+    border: none;
+    outline: none !important;
+    height: 40px;
+    padding: 0 10px;
+    font-style: italic;
+}
+input[type=text]{
+    border-radius: 3px 0 0 3px;
+    color: white;
+    background: black;
+}
+button{
+    border-radius: 0 3px 3px 0;
+}
+.todo-work-list{
+    border-radius: 5px;
+    padding: 0 15px;
+}
+.list-night{
+    background: white;
+    color: black;
+    box-shadow: 3px 3px 15px #2c2e3d;
+}
+.list-day{
+    background: black;
+    color: white;
+    border: 1px solid white;
+}
+.todo-works{
+    font-style: italic !important;
+    padding: 5px 0;
+    border-bottom: 1px solid darkgray;
 }

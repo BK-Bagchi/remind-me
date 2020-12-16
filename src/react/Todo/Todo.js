@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo, doneTodo } from '../../redux/action/action';
 import './Todo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faMoon, faSun, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Todo = () => {
     const add = useDispatch()
@@ -11,8 +11,8 @@ const Todo = () => {
     const dlt = useDispatch()
 
     const bgName = [
-        { pic: 'light-bg-pic', color: 'light-bg-color', time: 'Night', icon: faMoon },
-        { pic: 'dark-bg-pic', color: 'dark-bg-color', time: 'Day', icon: faSun }
+        { pic: 'light-bg-pic', color: 'light-bg-color', time: 'Night', icon: faMoon, listBg: 'list-night' },
+        { pic: 'dark-bg-pic', color: 'dark-bg-color', time: 'Day', icon: faSun, listBg: 'list-day' }
     ]
     const [bgIndex, setBgIndex] = useState(0)
     const [todoWork, setTodoWork] = useState('')
@@ -36,29 +36,33 @@ const Todo = () => {
             <div className={`top ${bgName[bgIndex].pic}`}></div>
             <div className={`bottom ${bgName[bgIndex].color}`}></div>
             <main className="w-100 d-flex justify-content-center">
-                <div>
-                    <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex flex-column align-items-center">
+                    <div className="d-flex justify-content-around align-items-center w-100 my-3">
                         <h1 className={`${bgName[bgIndex].time}`} onClick={() => colorMode()}>To Do</h1>
-                        <p className={`mode-toggle-icon ${bgName[bgIndex].time}`} onClick={() => colorMode()}><FontAwesomeIcon icon={bgName[bgIndex].icon} /></p>
+                        <p className={`font ${bgName[bgIndex].time}`} onClick={() => colorMode()}><FontAwesomeIcon icon={bgName[bgIndex].icon} /></p>
                         {/* <button onClick={() => colorMode()}>{bgName[bgIndex].time}</button> */}
                     </div>
-                    <div>
+                    <div className="my-3">
                         <input type="text" placeholder="Enter your To Do here" onBlur={settingTodo} />
                         <button onClick={addingTodo}>Add</button>
                     </div>
-                    <section className="todo-work-list">
+                    <section className={`todo-work-list my-3 ${bgName[bgIndex].listBg}`}>
                         {
                             todo.map((todo, i) => {
                                 return (
-                                    <div className="d-flex align-items-center justify-content-between" key={i} >
-                                        <input type="checkbox" name="" id="" onChange={(e) => doingTodo(e, i)} />
-                                        <p>{todo.message}</p>
-                                        <p onClick={() => deletingTodo(i)}>X</p>
+                                    <div className="todo-works d-flex align-items-center justify-content-between" key={i} >
+                                        <input type="checkbox" className="" onChange={(e) => doingTodo(e, i)} />
+                                        <p className="font text-capitalize px-3">{todo.message}</p>
+                                        <p className="pointer font" onClick={() => deletingTodo(i)}><FontAwesomeIcon icon={faTimes} /></p>
                                     </div>
                                 )
                             })
                         }
                     </section>
+                    <div className={`d-flex justify-content-between ${bgName[bgIndex].time}`}>
+                        <p>Total: {todo.length} &nbsp;</p>
+                        <p>Done: {todo.filter(done => done.done === true).length}</p>
+                    </div>
                 </div>
             </main>
         </section>
