@@ -13,6 +13,7 @@ const Todo = () => {
         { pic: 'dark-bg-pic', color: 'dark-bg-color', time: 'Light' }
     ]
     const [bgIndex, setBgIndex] = useState(0)
+    const [todoWork, setTodoWork] = useState('')
     const allTodo = useSelector(state => state);
     const [todo, setTodo] = useState([])
     useEffect(() => {
@@ -22,7 +23,9 @@ const Todo = () => {
     console.log(todo);
 
     const colorMode = () => (bgIndex === 1) ? setBgIndex(0) : setBgIndex(1)
-    const addingTodo = (e) => add(addTodo(e.target.value))
+
+    const settingTodo = (e) => setTodoWork(e.target.value)
+    const addingTodo = (e) => add(addTodo(todoWork))
     const doingTodo = (e, index) => done(doneTodo(e.target.checked, index))
     const deletingTodo = (index) => dlt(deleteTodo(index))
 
@@ -37,8 +40,8 @@ const Todo = () => {
                         <button onClick={() => colorMode()}>{bgName[bgIndex].time}</button>
                     </div>
                     <div>
-                        <input type="text" placeholder="Enter your To Do here" onBlur={addingTodo} />
-                        <button>Add</button>
+                        <input type="text" placeholder="Enter your To Do here" onBlur={settingTodo} />
+                        <button onClick={addingTodo}>Add</button>
                     </div>
                     <section className="todo-work-list">
                         {
